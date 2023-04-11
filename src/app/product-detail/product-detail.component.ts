@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../models/product.model';
+import { Plush } from '../models/plush.model';
 import {ActivatedRoute} from "@angular/router";
-import {ProductsService} from "../services/product.service";
+import {PlushesService} from "../services/plush.service";
 import {FavoriteProductsService} from "../services/favorite-products.service";
 
 @Component({
@@ -10,12 +10,12 @@ import {FavoriteProductsService} from "../services/favorite-products.service";
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  product!: Product;
+  product!: Plush;
   id!: number;
   orientation!: string;
   selectedPrice = 0;
 
-  constructor(private productsService: ProductsService, private favoritesService: FavoriteProductsService,
+  constructor(private plushesService: PlushesService, private favoritesService: FavoriteProductsService,
               private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
       this.id = parseInt(params['id']);
@@ -28,7 +28,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   onAddLike() {
-    this.productsService.onLikeProduct(this.product.id).then((product) => {
+    this.plushesService.onLikeProduct(this.product.id).then((product) => {
       this.product['isLiked'] = product['isLiked'];
       this.product['likes'] = product['likes'];
     })
@@ -39,7 +39,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    this.product = await this.productsService.getOneProduct(this.id);
+    this.product = await this.plushesService.getOneProduct(this.id);
     this.selectedPrice = this.product.price[0];
     this.orientation = "landscape";
   }

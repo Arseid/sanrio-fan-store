@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import {Product} from "../models/product.model";
+import {Plush} from "../models/plush.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoriteProductsService {
-  private favorites: Product[] = [];
+  private favorites: Plush[] = [];
 
-  addToFavorites(productToAdd: Product): void {
+  addToFavorites(productToAdd: Plush): void {
     if (!(this.favorites.some(product => product.id === productToAdd.id))) {
       this.favorites.push(productToAdd);
     }
@@ -17,7 +17,7 @@ export class FavoriteProductsService {
     this.favorites = this.favorites.filter(product => product.id !== id);
   }
 
-  getFavorites(): Product[] {
+  getFavorites(): Plush[] {
     return this.favorites;
   }
 }

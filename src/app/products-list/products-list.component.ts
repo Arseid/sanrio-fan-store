@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../models/product.model';
-import { ProductsService } from '../services/product.service';
+import { Plush } from '../models/plush.model';
+import { PlushesService } from '../services/plush.service';
 
 @Component({
   selector: 'app-products-list',
@@ -8,14 +8,14 @@ import { ProductsService } from '../services/product.service';
   styleUrls: ['./products-list.component.scss'],
 })
 export class ProductsListComponent implements OnInit {
-  products!: Product[];
+  products!: Plush[];
   search: string = '';
   sortTitle: string = 'asc';
   sortDate: string = 'asc';
-  constructor(private productsService: ProductsService) {}
+  constructor(private plushesService: PlushesService) {}
 
   ngOnInit() {
-    this.productsService.getAllProducts().then(products => {
+    this.plushesService.getAllProducts().then(products => {
       this.products = products;
     });
   }

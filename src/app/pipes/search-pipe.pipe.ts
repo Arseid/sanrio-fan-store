@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Product} from "../models/product.model";
+import {Plush} from "../models/plush.model";
 
 @Pipe({
   name: 'filterBySearch'
 })
 export class SearchPipePipe implements PipeTransform {
 
-  transform(products: Product[], searchresult?: string): Product[] {
+  transform(products: Plush[], searchresult?: string): Plush[] {
     if (!searchresult) {
       return products;
     }

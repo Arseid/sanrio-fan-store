@@ -1,16 +1,16 @@
 import {Injectable} from '@angular/core';
-import {Product} from "../models/product.model";
+import {Plush} from "../models/plush.model";
 
 @Injectable({
     providedIn: 'root'
 })
-export class ProductsService {
+export class PlushesService {
     private serverUrl = 'http://localhost:3000';
 
-    async getOneProduct(id: number): Promise<Product> {
-        const response = await fetch(`${this.serverUrl}/products/${id}`);
+    async getOneProduct(id: number): Promise<Plush> {
+        const response = await fetch(`${this.serverUrl}/plushes/${id}`);
         const data = await response.json();
-        return new Product(
+        return new Plush(
             data['id'],
             data['title'],
             data['description'],
@@ -23,32 +23,32 @@ export class ProductsService {
         );
     }
 
-    async getAllProducts(): Promise<Product[]> {
-        const response = await fetch(`${this.serverUrl}/products`);
+    async getAllProducts(): Promise<Plush[]> {
+        const response = await fetch(`${this.serverUrl}/plushes`);
         const data = await response.json();
         console.log(data);
-        return data.map((product: any) => new Product(
-            product['id'],
-            product['title'],
-            product['description'],
-            product['price'],
-            product['imageUrl'],
-            product['likes'],
-            product['publicationDate'],
-            product['isLiked'],
-            product['size']
+        return data.map((plush: any) => new Plush(
+            plush['id'],
+            plush['title'],
+            plush['description'],
+            plush['price'],
+            plush['imageUrl'],
+            plush['likes'],
+            plush['publicationDate'],
+            plush['isLiked'],
+            plush['size']
         ));
     }
 
-    async onLikeProduct(id: number): Promise<Product> {
-        const response = await fetch(`${this.serverUrl}/products/${id}/likes`, {
+    async onLikeProduct(id: number): Promise<Plush> {
+        const response = await fetch(`${this.serverUrl}/plushes/${id}/likes`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
         });
         const data = await response.json();
-        return new Product(
+        return new Plush(
             data['id'],
             data['title'],
             data['description'],

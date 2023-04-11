@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {FavoriteProductsService} from "../services/favorite-products.service";
-import {Product} from "../models/product.model";
+import {Plush} from "../models/plush.model";
 
 @Component({
   selector: 'app-favorites',
@@ -8,7 +8,7 @@ import {Product} from "../models/product.model";
   styleUrls: ['./favorites.component.scss'],
 })
 export class FavoritesComponent {
-  favorites: Product[] = [];
+  favorites: Plush[] = [];
   search: string = '';
   sortTitle: string = 'asc';
   sortDate: string = 'asc';
@@ -20,7 +20,7 @@ export class FavoritesComponent {
     this.favorites = this.favoritesService.getFavorites();
   }
 
-  onRemoveFromFavorites(product: Product): void {
+  onRemoveFromFavorites(product: Plush): void {
     this.favoritesService.removeFromFavorites(product.id);
     this.favorites = this.favoritesService.getFavorites();
   }

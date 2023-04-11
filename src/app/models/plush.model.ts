@@ -1,4 +1,4 @@
-export class Product {
+export class Plush {
     constructor(
         public id: number,
         public title: string,

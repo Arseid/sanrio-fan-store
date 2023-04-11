@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Product} from '../models/product.model';
-import {ProductsService} from "../services/product.service";
+import {Plush} from '../models/plush.model';
+import {PlushesService} from "../services/plush.service";
 import {FavoriteProductsService} from "../services/favorite-products.service";
 
 @Component({
@@ -9,11 +9,11 @@ import {FavoriteProductsService} from "../services/favorite-products.service";
   styleUrls: ['./product-card.component.scss']
 })
 export class ProductCardComponent implements OnInit {
-  @Input() product!: Product;
+  @Input() product!: Plush;
 
   selectedPrice = 0;
 
-  constructor(private productsService: ProductsService, private favoritesService: FavoriteProductsService) { }
+  constructor(private plushesService: PlushesService, private favoritesService: FavoriteProductsService) { }
 
   onSizeSelected(e: any) {
     let priceIndex = this.product.size?.indexOf(e.target.value) || 0;
@@ -21,7 +21,7 @@ export class ProductCardComponent implements OnInit {
   }
 
   onAddLike() {
-    this.productsService.onLikeProduct(this.product.id).then((product) => {
+    this.plushesService.onLikeProduct(this.product.id).then((product) => {
       this.product['isLiked'] = product['isLiked'];
       this.product['likes'] = product['likes'];
     })
