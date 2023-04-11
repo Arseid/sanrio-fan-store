@@ -1,0 +1,28 @@
+<div *ngIf="favorites.length === 0">
+    <h1>No favorites added yet</h1>
+</div>
+
+<div *ngIf="favorites.length > 0">
+    <h1>Favorite Products</h1>
+    <div class="favorite-products-search-container">
+        <mat-form-field appearance="outline" color="warn" class="favorite-products-search-field">
+            <mat-label>Search</mat-label>
+            <input matInput type="text" id="search" name="search" [(ngModel)]="search" />
+        </mat-form-field>
+        <div class="favorite-products-sort-buttons">
+            <button mat-stroked-button (click)="toggleSortOrder('date')">
+                Sort by date ({{ sortDate }})
+            </button>
+            <button mat-stroked-button (click)="toggleSortOrder('title')">
+                Sort by date ({{ sortTitle }})
+            </button>
+        </div>
+    </div>
+    <ul *ngFor="let product of (favorites | sortByDate:sortDate | sortByTitle:sortTitle | filterBySearch:search)">
+        <li>
+            <img [src]="product.imageUrl" alt="{{ product.title }}"/>
+            <h2>{{product.title}}</h2>
+            <button mat-raised-button color="warn" (click)="onRemoveFromFavorites(product)">Remove from favorites</button>
+        </li>
+    </ul>
+</div>

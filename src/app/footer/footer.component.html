@@ -1,0 +1,12 @@
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-copyright">
+            <p>&copy; {{currentYear}} {{websiteName}}. All rights reserved.</p>
+        </div>
+        <div class="footer-newsletter">
+            <p>Join our newsletter</p>
+            <input type="email" placeholder="Your email address" [(ngModel)]="email" />
+            <button mat-raised-button color="warn" (click)="subscribe()">Subscribe</button>
+        </div>
+    </div>
+</footer>

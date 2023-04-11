@@ -1,0 +1,21 @@
+<div class="product-card">
+    <a class="product-image" [routerLink]="['/product', product.id]">
+        <img [src]="product.imageUrl" alt="{{ product.title }}" />
+    </a>
+    <div class="product-info">
+        <h2>{{ product.title | uppercase }}</h2>
+        <p *ngIf="product.size && product.size.length > 1" class="sizes-info">Multiple sizes available</p>
+        <div class="price-likes">
+            <p>
+                <b>{{ selectedPrice | currency: 'EUR' }}</b>
+                <select (change)="onSizeSelected($event)" *ngIf="product.size">
+                    <option *ngFor="let size of product.size" value="{{ size }}">{{ size }}</option>
+                </select>
+            </p>
+            <p>
+                <b>{{ product.likes }} <span class="heart" [ngClass]="{liked: product.isLiked}" (click)="onAddLike()">&hearts;</span></b>
+            </p>
+        </div>
+        <button class="favorites-button" (click)="onAddToFavorites()">Add to favorites</button>
+    </div>
+</div>

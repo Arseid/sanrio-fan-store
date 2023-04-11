@@ -1,0 +1,35 @@
+.footer {
+  background-color: #f8f9fa;
+  padding: 2rem 0;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.footer-copyright {
+  color: #333;
+  font-size: 1rem;
+}
+
+.footer-newsletter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-newsletter input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+p {
+  margin: 0;
+}
