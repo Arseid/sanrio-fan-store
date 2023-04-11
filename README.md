@@ -1,1 +1,1 @@
-# Y-FU Boutique
+# Sanrio Fan Store
