@@ -27,13 +27,9 @@ export class ProductCardComponent implements OnInit {
     })
   }
 
-  onAddToFavorites(): void {
-    const productWithSelectedSizeAndPrice: Plush = {
-      ...this.product,
-      selectedSize: this.product.size ? this.product.size[this.product.price.indexOf(this.selectedPrice)] : null,
-      selectedPrice: this.selectedPrice
-    };
-    this.favoritesService.addToFavorites(productWithSelectedSizeAndPrice);
+  async onAddToFavorites(): Promise<void> {
+    const selectedSize = this.product.size ? this.product.size[this.product.price.indexOf(this.selectedPrice)] : null;
+    await this.favoritesService.addToFavorites(this.product, selectedSize);
   }
 
   ngOnInit(): void {

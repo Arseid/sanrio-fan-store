@@ -40,6 +40,20 @@ export class PlushesService {
         ));
     }
 
+    async getProductPrice(id: number, size: string): Promise<number | null> {
+        const product = await this.getOneProduct(id);
+        if (!product.size || !product.price) {
+            return null;
+        }
+
+        const sizeIndex = product.size.indexOf(size);
+        if (sizeIndex === -1) {
+            return null;
+        }
+
+        return product.price[sizeIndex];
+    }
+
     async onLikeProduct(id: number): Promise<Plush> {
         const response = await fetch(`${this.serverUrl}/plushes/${id}/likes`, {
             method: 'PUT',
