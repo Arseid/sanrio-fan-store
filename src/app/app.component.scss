@@ -4,10 +4,9 @@
   height: 100vh;
   .content-container {
     background-image: url('../assets/svg/puzzle-mosaic.svg'), url('../assets/svg/bg-clouds.svg'), url('../assets/svg/bg-flower.svg');
-    background-position: center center, calc(100% - 100px) 0, 0 calc(100% - 100px);
+    background-position: center center, calc(100% - 38px) 0, 0 100%;
     background-repeat: repeat, no-repeat, no-repeat;
-    padding: 1rem;
     margin-top: 78px;
-    overflow: auto;
+    overflow-y: auto;
   }
 }

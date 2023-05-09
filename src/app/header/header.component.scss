@@ -1,6 +1,7 @@
 @import "../app.palette.scss";
 
 .header {
+  box-shadow: 0px 4px 9px $shadow;
   display: flex;
   align-items: center;
   justify-content: space-between;
