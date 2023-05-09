@@ -8,6 +8,8 @@ export class Plush {
         public likes: number,
         public publicationDate: Date,
         public isLiked: boolean,
-        public size?: Array<string>){
-    }
+        public size?: Array<string>,
+        public selectedSize?: string | null,
+        public selectedPrice?: number | null
+    ) {}
 }
