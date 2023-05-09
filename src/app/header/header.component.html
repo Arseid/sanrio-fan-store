@@ -1,11 +1,24 @@
 <header class="header">
-    <h1>{{title}}</h1>
-    <nav>
-        <ul class="nav-list">
-            <li class="header-link"><a [routerLink]="['/']">Home</a></li>
-            <li class="header-link"><a [routerLink]="['/favorites']">Favorites</a></li>
-            <li class="header-link"><a [routerLink]="['/about']">About</a></li>
-            <li class="header-link"><a [routerLink]="['/cart']">Cart</a></li>
-        </ul>
-    </nav>
+  <a class="logo" href="/">
+    <img
+      src="../../assets/sanfan-logo.png"
+      alt="Sanrio Fan Store"
+    />
+  </a>
+
+  <div class="searchBar">
+    <img src="../../assets/svg/search.svg">
+    <input type="text" placeholder="Search..." />
+  </div>
+
+  <nav>
+    <ul class="nav-list">
+      <li class="header-link"><a [routerLink]="['/']">Home</a></li>
+      <li class="header-link">
+        <a [routerLink]="['/favorites']">Favorites</a>
+      </li>
+      <li class="header-link"><a [routerLink]="['/about']">About</a></li>
+      <li class="header-link"><a [routerLink]="['/cart']">Cart</a></li>
+    </ul>
+  </nav>
 </header>

@@ -1,10 +1,62 @@
+@import "../app.palette.scss";
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
-  max-width: 1200px;
+  height: 54px;
+  padding: 0.75rem 2rem;
   margin: 0 auto;
+  background-image: url("../../assets/svg/header-clouds.svg"),
+    linear-gradient(to right, $grapefruit, $salmon);
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: auto 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  a.logo {
+    line-height: 0;
+    padding-right: 1rem;
+  }
+  a.logo img {
+    height: 40px;
+  }
+  img.cloud {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.searchBar {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  height: 50px;
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+
+  input[type="text"] {
+    flex: 1;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: $primary-text;
+    padding-left: 1rem;
+    font-weight: bold;
+    font-size: 1rem;
+
+    &::placeholder {
+      color: $primary-text-light;
+    }
+  }
 }
 
 h1 {
@@ -20,16 +72,18 @@ h1 {
 }
 
 .header-link {
-  margin-left: 1rem;
+  margin-left: 3rem;
 }
 
 .header-link a {
   text-decoration: none;
-  color: #333;
+  color: white;
   font-weight: 500;
   transition: color 0.2s;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .header-link a:hover {
-  color: red;
+  color: $primary-text;
 }
