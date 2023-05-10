@@ -7,7 +7,20 @@ import { Plush } from '../models/plush.model';
 export class CartService {
   private cart: { product: Plush; size: string | null; quantity: number }[] = [];
 
-  constructor() {}
+  constructor() {
+    this.getCartFromLocalStorage();
+  }
+
+  private getCartFromLocalStorage(): void {
+    const storedCart = localStorage.getItem('cart');
+    if (storedCart) {
+      this.cart = JSON.parse(storedCart);
+    }
+  }
+
+  private saveCartToLocalStorage(): void {
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+  }
 
   addToCart(productToAdd: Plush, selectedSize: string | null, quantity: number): void {
     const existingProductIndex = this.cart.findIndex(
@@ -20,6 +33,8 @@ export class CartService {
     else {
       this.cart.push({ product: productToAdd, size: selectedSize, quantity });
     }
+
+    this.saveCartToLocalStorage();
   }
 
   getCart(): { product: Plush; size: string | null; quantity: number }[] {
