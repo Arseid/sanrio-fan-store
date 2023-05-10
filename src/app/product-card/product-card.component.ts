@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Plush} from '../models/plush.model';
 import {PlushesService} from "../services/plush.service";
 import {FavoriteProductsService} from "../services/favorite-products.service";
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-product-card',
@@ -13,7 +14,10 @@ export class ProductCardComponent implements OnInit {
 
   selectedPrice = 0;
 
-  constructor(private plushesService: PlushesService, private favoritesService: FavoriteProductsService) { }
+  constructor(private plushesService: PlushesService,
+              private favoritesService: FavoriteProductsService,
+              private cartService: CartService
+  ) { }
 
   onSizeSelected(e: any) {
     let priceIndex = this.product.size?.indexOf(e.target.value) || 0;
@@ -30,6 +34,13 @@ export class ProductCardComponent implements OnInit {
   async onAddToFavorites(): Promise<void> {
     const selectedSize = this.product.size ? this.product.size[this.product.price.indexOf(this.selectedPrice)] : null;
     await this.favoritesService.addToFavorites(this.product, selectedSize);
+  }
+
+  async onAddToCart(): Promise<void> {
+    const selectedSize = this.product.size
+        ? this.product.size[this.product.price.indexOf(this.selectedPrice)]
+        : null;
+    this.cartService.addToCart(this.product, selectedSize, 1);
   }
 
   ngOnInit(): void {

@@ -1,3 +1,5 @@
-<p>
-    cart works!
-</p>
+<div class="cart-item" *ngFor="let item of cartService.getCart()">
+    <p>
+        {{ item.product.title }} - {{ item.size }} - {{ item.quantity }} pcs
+    </p>
+</div>
