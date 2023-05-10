@@ -88,6 +88,11 @@ export class CartService {
     }
   }
 
+  clearCart(): void {
+    this.cart = [];
+    localStorage.removeItem('cart');
+  }
+
   getCart(): { product: Plush; size: string | null; quantity: number }[] {
     return this.cart;
   }

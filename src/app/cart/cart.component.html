@@ -15,5 +15,5 @@
 <div class="cart-summary">
     <h3>Cart Summary</h3>
     <p>Total: {{ cartService.getTotalPrice() | currency: 'EUR' }}</p>
-    <button class="checkout-button">Checkout</button>
+    <button class="checkout-button" [routerLink]="['/checkout']">Checkout</button>
 </div>
