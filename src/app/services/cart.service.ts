@@ -37,6 +37,57 @@ export class CartService {
     this.saveCartToLocalStorage();
   }
 
+  getPriceForItem(item: { product: Plush; size: string | null }): number {
+    if (item.size === null || item.product.size === undefined) {
+      return item.product.price[0];
+    }
+    return item.product.price[item.product.size?.indexOf(item.size) || 0];
+  }
+
+  getTotalPrice(): number {
+    return this.cart.reduce((total, item) => {
+      const itemPrice = this.getPriceForItem(item);
+      return total + itemPrice * item.quantity;
+    }, 0);
+  }
+
+  increaseQuantity(product: Plush, size: string | null): void {
+    const existingProductIndex = this.cart.findIndex(
+        (item) => item.product.id === product.id && item.size === size
+    );
+
+    if (existingProductIndex >= 0) {
+      this.cart[existingProductIndex].quantity += 1;
+      this.saveCartToLocalStorage();
+    }
+  }
+
+  decreaseQuantity(product: Plush, size: string | null): void {
+    const existingProductIndex = this.cart.findIndex(
+        (item) => item.product.id === product.id && item.size === size
+    );
+
+    if (existingProductIndex >= 0) {
+      this.cart[existingProductIndex].quantity -= 1;
+
+      if (this.cart[existingProductIndex].quantity <= 0) {
+        this.cart.splice(existingProductIndex, 1);
+      }
+      this.saveCartToLocalStorage();
+    }
+  }
+
+  removeFromCart(product: Plush, size: string | null): void {
+    const existingProductIndex = this.cart.findIndex(
+        (item) => item.product.id === product.id && item.size === size
+    );
+
+    if (existingProductIndex >= 0) {
+      this.cart.splice(existingProductIndex, 1);
+      this.saveCartToLocalStorage();
+    }
+  }
+
   getCart(): { product: Plush; size: string | null; quantity: number }[] {
     return this.cart;
   }

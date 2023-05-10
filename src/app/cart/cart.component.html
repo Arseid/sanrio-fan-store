@@ -1,5 +1,19 @@
-<div class="cart-item" *ngFor="let item of cartService.getCart()">
-    <p>
-        {{ item.product.title }} - {{ item.size }} - {{ item.quantity }} pcs
-    </p>
+<div *ngFor="let item of cartService.getCart()">
+    <div class="item-info" style="display: flex; flex-direction: row; gap: 15px">
+        <a class="product-image" [routerLink]="['/product', item.product.id]">
+            <img style="height: 80px; width: 80px" [src]="item.product.imageUrl" alt="{{ item.product.title }}"/>
+        </a>
+        <h3>{{ item.product.title }}</h3>
+        <p>Size: {{ item.size }}</p>
+        <p>Quantity: {{ item.quantity }}</p>
+        <button (click)="cartService.increaseQuantity(item.product, item.size)">+</button>
+        <button (click)="cartService.decreaseQuantity(item.product, item.size)" [disabled]="item.quantity <= 1">-</button>
+        <p>Total Price: {{ cartService.getPriceForItem(item) * item.quantity | currency: 'EUR' }}</p>
+        <button (click)="cartService.removeFromCart(item.product, item.size)">Delete</button>
+    </div>
+</div>
+<div class="cart-summary">
+    <h3>Cart Summary</h3>
+    <p>Total: {{ cartService.getTotalPrice() | currency: 'EUR' }}</p>
+    <button class="checkout-button">Checkout</button>
 </div>
