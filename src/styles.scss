@@ -1,13 +1,11 @@
 @import "./app/app.palette.scss";
 
-html,
-body {
-}
 body {
   margin: 0;
   height: 100vh;
   overflow: hidden;
 }
+
 * {
   font-family: "Baloo 2", cursive;
   color: $primary-text;
@@ -21,14 +19,13 @@ body {
   height: 12px;
 }
 *::-webkit-scrollbar-track {
-  background: white;
-  border-radius: 20px;
+  margin: 4px;
 }
 *::-webkit-scrollbar-thumb {
-  background-color: $primary-pink;
   border-radius: 20px;
-  border: 3px solid white;
+  background-color: $primary-pink;
+  border: solid 3px white;
 }
 *::-webkit-scrollbar-corner {
-  background-color: white;
+  background-color: transparent;
 }

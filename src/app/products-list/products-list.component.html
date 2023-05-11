@@ -1,42 +1,22 @@
 <div class="container">
-    <app-products-list-drawer></app-products-list-drawer>
+  <app-products-list-drawer></app-products-list-drawer>
   <div class="content-container">
-    <div class="products-list-search-container">
-      <mat-form-field
-        appearance="outline"
-        class="products-list-search-field"
-        color="warn"
-      >
-        <mat-label>Search</mat-label>
-        <input
-          matInput
-          type="text"
-          id="search"
-          name="search"
-          [(ngModel)]="search"
-        />
-      </mat-form-field>
-      <div class="sort-buttons">
-        <button mat-stroked-button (click)="toggleSortOrder('date')">
-          Sort by date ({{ sortDate }})
-        </button>
-        <button mat-stroked-button (click)="toggleSortOrder('title')">
-          Sort by date ({{ sortTitle }})
-        </button>
-      </div>
+    <div class="title-div">
+      <img src="../../assets/svg/cloud-title.svg">
+      <div class="title">Products list</div>
     </div>
     <div class="products-list">
       <ng-container *ngIf="products">
-        <div
+        <app-product-card
           *ngFor="
             let product of products
               | sortByDate : sortDate
               | sortByTitle : sortTitle
               | filterBySearch : search
           "
+          [product]="product"
         >
-          <app-product-card [product]="product"> </app-product-card>
-        </div>
+        </app-product-card>
       </ng-container>
     </div>
   </div>

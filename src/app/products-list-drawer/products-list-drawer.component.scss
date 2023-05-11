@@ -1,17 +1,16 @@
 @import "../app.palette.scss";
 
 .container {
-  width: 236px;
   height: 100%;
-  padding: 2rem;
   border-right: 1px $primary-text solid;
   backdrop-filter: blur(4px);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .sub-container {
   width: 236px;
-  position: sticky;
-  top: 2rem;
+  padding: 2rem;
 }
 
 .title {
@@ -26,9 +25,10 @@
   background-color: $secondary-pink;
   box-shadow: 0 1px 0 0px $primary-text;
   border-radius: 7px;
+  
   &:focus {
     outline: none;
-    background-color: white;
+    box-shadow: 0 0 0 1px $primary-text;
   }
 }
 
@@ -110,7 +110,7 @@
   .price-input {
     width: 48%;
     height: 2.5rem;
-    padding-left: 1rem;
+    text-align: center;
 
     &::placeholder {
       color: $primary-text-light;
