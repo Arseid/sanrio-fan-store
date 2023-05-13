@@ -55,7 +55,6 @@
         overflow: hidden;
         text-overflow: ellipsis;
         flex-grow: 1;
-        padding: 0.5rem 0;
       }
 
       .flex-row {
@@ -63,6 +62,7 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        padding-top: 0.25rem;
 
         .product-price {
           position: relative;
