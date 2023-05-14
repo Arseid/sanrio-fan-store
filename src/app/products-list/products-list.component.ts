@@ -24,6 +24,19 @@ export class ProductsListComponent implements OnInit {
     this.search = searchQuery;
   }
 
+  handleSortTypeEvent(sortType: string): void {
+    if (sortType === 'Name') {
+      this.sortTitle = 'asc';
+    }
+    if (sortType === 'Date') {
+      this.sortDate = 'asc';
+    }
+  }
+
+  handleSortOrderEvent(sortOrder: string): void {
+    this.sortTitle = sortOrder;
+  }
+
   toggleSortOrder(sortType: string) {
     if (sortType === 'title') {
       if (this.sortTitle==='desc'){
