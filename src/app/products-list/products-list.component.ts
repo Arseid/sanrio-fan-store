@@ -20,6 +20,10 @@ export class ProductsListComponent implements OnInit {
     });
   }
 
+  handleSearchEvent(searchQuery: string): void {
+    this.search = searchQuery;
+  }
+
   toggleSortOrder(sortType: string) {
     if (sortType === 'title') {
       if (this.sortTitle==='desc'){

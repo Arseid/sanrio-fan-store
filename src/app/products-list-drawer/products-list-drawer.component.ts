@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-products-list-drawer',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./products-list-drawer.component.scss'],
 })
 export class ProductsListDrawerComponent {
+  @Output() searchEvent = new EventEmitter<string>();
 
+  emitSearchEvent(event: any): void {
+    this.searchEvent.emit(event.target.value);
+  }
 }

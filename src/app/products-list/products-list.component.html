@@ -1,5 +1,5 @@
 <div class="container">
-  <app-products-list-drawer></app-products-list-drawer>
+  <app-products-list-drawer (searchEvent)="handleSearchEvent($event)"></app-products-list-drawer>
   <div class="content-container">
     <div class="title-div">
       <img src="../../assets/svg/cloud-title.svg">
