@@ -26,6 +26,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { AboutComponent } from './about/about.component';
 import { SortByTitlePipe } from './pipes/sort-by-title.pipe';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { FavoritesComponent } from './favorites/favorites.component';
     ProductDetailComponent,
     AboutComponent,
     SortByTitlePipe,
-    FavoritesComponent
+    FavoritesComponent,
+    CartComponent,
+    CheckoutComponent
   ],
     imports: [
         BrowserModule,
