@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CartService } from '../services/cart.service';
+import { Order } from '../models/order.model'; // Import the Order model
 
 @Component({
   selector: 'app-checkout',
@@ -13,13 +14,23 @@ export class CheckoutComponent {
     phone: '',
     address: ''
   };
-  orderId: string | null = null;
+  order: Order | null = null; // replace orderId with order
 
   constructor(public cartService: CartService) {}
 
   onSubmit(): void {
-    console.log('Contact form submitted:', this.contact);
-    this.orderId = this.generateRandomOrderId();
+    this.order = new Order(
+        this.generateRandomOrderId(),
+        this.cartService.getCart(),
+        {
+          name: this.contact.name,
+          email: this.contact.email,
+          phone: this.contact.phone,
+          address: this.contact.address
+        }
+    );
+    console.log(this.order);
+
     this.cartService.clearCart();
   }
 

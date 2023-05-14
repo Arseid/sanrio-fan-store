@@ -1,4 +1,4 @@
-<div *ngIf="!orderId">
+<div *ngIf="!order">
     <div class="cart-summary">
         <h3>Cart Summary</h3>
         <p>Total: {{ cartService.getTotalPrice() | currency: 'EUR' }}</p>
@@ -25,7 +25,7 @@
     </form>
 </div>
 
-<div *ngIf="orderId">
+<div *ngIf="order">
     <h3>Thank you for your order!</h3>
-    <p>Your order ID is: {{ orderId }}</p>
+    <p>Your order ID is: {{ order.id }}</p>
 </div>
