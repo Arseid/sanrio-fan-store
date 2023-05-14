@@ -38,7 +38,6 @@ export class CheckoutComponent {
         );
 
         this.order = await this.orderService.createOrder(this.order);
-        console.log(this.order);
         this.cartService.clearCart();
     }
 
