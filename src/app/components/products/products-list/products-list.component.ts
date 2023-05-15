@@ -16,6 +16,8 @@ export class ProductsListComponent implements OnInit {
   sortPrice: string | undefined = "asc";
   sortType: string = "name";
   sortOrder: string = "asc";
+  minPrice: number = 0;
+  maxPrice: number = Infinity;
   constructor(private plushesService: PlushesService) {}
 
   ngOnInit() {
@@ -42,5 +44,10 @@ export class ProductsListComponent implements OnInit {
     this.sortTitle = this.sortType === "name" ? this.sortOrder : undefined;
     this.sortDate = this.sortType === "date" ? this.sortOrder : undefined;
     this.sortPrice = this.sortType === "price" ? this.sortOrder : undefined;
+  }
+
+  handlePriceRangeEvent(priceRange: { min: number; max: number }) {
+    this.minPrice = priceRange.min;
+    this.maxPrice = priceRange.max;
   }
 }

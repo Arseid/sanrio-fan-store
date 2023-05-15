@@ -3,6 +3,7 @@
           (searchEvent)="handleSearchEvent($event)"
           (sortTypeEvent)="handleSortTypeEvent($event)"
           (sortOrderEvent)="handleSortOrderEvent($event)"
+          (priceRangeEvent)="handlePriceRangeEvent($event)"
   ></app-products-list-drawer>
   <div class="content-container">
     <div class="title-div">
@@ -17,6 +18,7 @@
               | sortByDate : sortDate
               | sortByTitle : sortTitle
               | sortByPrice : sortPrice
+              | filterByPrice : minPrice : maxPrice
               | filterBySearch : search
           "
           [product]="product"
