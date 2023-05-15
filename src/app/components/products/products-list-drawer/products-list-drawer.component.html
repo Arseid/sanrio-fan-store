@@ -1,25 +1,33 @@
-  <div class="container">
-    <div class="sub-container">
-      <h1 class="title">Search</h1>
-      <div class="search-container">
-        <input
-          type="text"
-          placeholder="Search a product ..."
-          class="search-input input"
-          (input)="emitSearchEvent($event)"
-        />
-      </div>
+<div class="container">
+  <div class="sub-container">
+    <h1 class="title">Search</h1>
+    <div class="search-container">
+      <input
+              type="text"
+              placeholder="Search a product ..."
+              class="search-input input"
+              (input)="emitSearchEvent($event)"
+      />
+    </div>
 
-      <h1 class="title">Sort by</h1>
-      <div class="select-container">
-        <select class="select input" (change)="emitSortTypeEvent($event)">
-          <option selected>Name</option>
-          <option>Date</option>
-        </select>
-        <div class="direction">
-          <button class="toggle-button left active" (click)="emitSortOrderEvent('asc')">Ascendant</button>
-          <button class="toggle-button right" (click)="emitSortOrderEvent('desc')">Descendant</button>
-        </div>
+    <h1 class="title">Sort by</h1>
+    <div class="select-container">
+      <select class="select input" (change)="emitSortTypeEvent($event)">
+        <option value="name" selected>Name</option>
+        <option value="price">Price</option>
+        <option value="date">Date</option>
+      </select>
+      <div class="direction">
+        <button class="toggle-button left active" (click)="emitSortOrderEvent('asc')">Ascendant</button>
+        <button class="toggle-button right" (click)="emitSortOrderEvent('desc')">Descendant</button>
       </div>
     </div>
+
+    <h1 class="title">Price</h1>
+    <div class="price-container">
+      <input type="number" placeholder="Min" class="price-input input" (input)="emitPriceRangeEvent(minPrice.value, maxPrice.value)" #minPrice />
+      <span class="dash">&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+      <input type="number" placeholder="Max" class="price-input input" (input)="emitPriceRangeEvent(minPrice.value, maxPrice.value)" #maxPrice />
+    </div>
   </div>
+</div>

@@ -28,6 +28,8 @@ import { AboutComponent } from './view/about/about.component';
 import { CartComponent } from './view/cart/cart.component';
 import { CheckoutComponent } from './view/checkout/checkout.component';
 import { FavoritesComponent } from './view/favorites/favorites.component';
+import { SortByPricePipe } from './pipes/sort-by-price.pipe';
+import { FilterByPricePipe } from './pipes/filter-by-price.pipe';
 
 registerLocaleData(localeEn, "en");
 
@@ -47,6 +49,8 @@ registerLocaleData(localeEn, "en");
     CartComponent,
     CheckoutComponent,
     ProductsListDrawerComponent,
+    SortByPricePipe,
+    FilterByPricePipe,
   ],
   imports: [
     BrowserModule,
