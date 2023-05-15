@@ -1,31 +1,81 @@
-<div *ngIf="!order">
-    <div class="cart-summary">
-        <h3>Cart Summary</h3>
-        <p>Total: {{ cartService.getTotalPrice() | currency: 'EUR' }}</p>
+<form
+  class="container"
+  *ngIf="!order"
+  (ngSubmit)="onSubmit()"
+  #contactForm="ngForm"
+>
+  <div class="title">Cart Summary</div>
+
+  <table>
+    <tr>
+      <td>
+        <label for="name">Name:</label>
+      </td>
+      <td>
+        <input
+          placeholder="Name"
+          type="text"
+          id="name"
+          name="name"
+          required
+          [(ngModel)]="contact.name"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td><label for="email">Email:</label></td>
+      <td>
+        <input
+          placeholder="Email"
+          type="email"
+          id="email"
+          name="email"
+          required
+          [(ngModel)]="contact.email"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td><label for="phone">Phone:</label></td>
+      <td>
+        <input
+          placeholder="Phone"
+          type="tel"
+          id="phone"
+          name="phone"
+          required
+          [(ngModel)]="contact.phone"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td><label for="address">Address:</label></td>
+      <td>
+        <input
+          placeholder="Address"
+          type="text"
+          id="address"
+          name="address"
+          required
+          [(ngModel)]="contact.address"
+        />
+      </td>
+    </tr>
+  </table>
+  <div class="bottom">
+    <div class="total">
+      <div class="bold">Total</div>
+      <div>{{ cartService.getTotalPrice() | currency : "EUR" }}</div>
     </div>
+    <button type="submit" [disabled]="!contactForm.valid">Order</button>
+  </div>
+</form>
 
-    <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required [(ngModel)]="contact.name">
-        </div>
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required [(ngModel)]="contact.email">
-        </div>
-        <div>
-            <label for="phone">Phone:</label>
-            <input type="tel" id="phone" name="phone" required [(ngModel)]="contact.phone">
-        </div>
-        <div>
-            <label for="address">Address:</label>
-            <input type="text" id="address" name="address" required [(ngModel)]="contact.address">
-        </div>
-        <button type="submit" [disabled]="!contactForm.valid">Order</button>
-    </form>
-</div>
-
-<div *ngIf="order">
-    <h3>Thank you for your order!</h3>
-    <p>Your order ID is: {{ order.id }}</p>
+<div class="container" *ngIf="order">
+  <div class="title">Thank you for your order!</div>
+  <div class="order-id-box">
+    <div>Order ID</div>
+    <div class="order-id">{{ order.id }}</div>
+  </div>
+  <a href="../"><button>Back to home</button></a>
 </div>

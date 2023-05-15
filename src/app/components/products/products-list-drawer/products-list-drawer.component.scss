@@ -1,4 +1,4 @@
-@import "../../../app.palette.scss";
+@import "../../../../styles/palette.scss";
 
 .container {
   height: 100%;
@@ -29,7 +29,6 @@
 
   &:focus {
     outline: none;
-    background-color: white;
     box-shadow: 0 0 0 1px $primary-text;
   }
 }
