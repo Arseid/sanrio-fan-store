@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 
-import { Plush } from '../../../models/plush.model';
-import { FavoriteProductsService } from '../../../services/favorite-products.service';
-import { PlushesService } from '../../../services/plush.service';
+import { Plush } from "../../../models/plush.model";
+import { FavoriteProductsService } from "../../../services/favorite-products.service";
+import { PlushesService } from "../../../services/plush.service";
 
 @Component({
   selector: "app-product-detail",
@@ -15,6 +15,8 @@ export class ProductDetailComponent implements OnInit {
   id!: number;
   orientation!: string;
   selectedPrice = 0;
+  validationState = false;
+  imageUrl = "../../assets/svg/shopping-cart-plus.svg";
 
   constructor(
     private plushesService: PlushesService,
@@ -43,6 +45,15 @@ export class ProductDetailComponent implements OnInit {
       ? this.product.size[this.product.price.indexOf(this.selectedPrice)]
       : null;
     await this.favoritesService.addToFavorites(this.product, selectedSize);
+  }
+
+  async onAddToCart(): Promise<void> {
+    this.validationState = true;
+    this.imageUrl = "../../assets/svg/plus.svg";
+    setTimeout(() => {
+      this.validationState = false;
+      this.imageUrl = "../../assets/svg/shopping-cart-plus.svg";
+    }, 1000);
   }
 
   async ngOnInit(): Promise<void> {

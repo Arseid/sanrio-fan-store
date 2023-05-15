@@ -44,8 +44,12 @@
             <button class="favorite" (click)="onAddToFavorites()">
               Add to favorites
             </button>
-            <button class="cart">
-              Add to cart<img src="../../assets/svg/shopping-cart-plus.svg" />
+            <button
+              class="cart"
+              [ngClass]="{ 'cart-validation': validationState }"
+              (click)="onAddToCart()"
+            >
+              Add to cart<img [src]="imageUrl" />
             </button>
           </div>
         </div>

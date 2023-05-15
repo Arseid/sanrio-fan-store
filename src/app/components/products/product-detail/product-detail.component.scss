@@ -66,8 +66,7 @@ $breakpoint: 800px;
       overflow-y: auto;
       overflow-x: hidden;
       @media (max-width: $breakpoint) {
-      overflow: visible;
-
+        overflow: visible;
       }
 
       .product-info {
@@ -98,11 +97,9 @@ $breakpoint: 800px;
           display: flex;
           flex-direction: column;
           align-items: center;
-          padding-bottom: 4rem;
-          @media (max-width: $breakpoint) {
-            padding-bottom: 2rem;
-            padding-top: 2rem;
-          }
+          padding-bottom: auto;
+          margin-right: -1rem;
+          padding-bottom: 2rem;
 
           .quantity-box {
             display: flex;
@@ -232,6 +229,9 @@ $breakpoint: 800px;
               display: flex;
               background-color: $primary-pink;
               color: white;
+              &.cart-validation {
+                background-color: mediumseagreen;
+              }
 
               img {
                 margin-left: 1rem;
