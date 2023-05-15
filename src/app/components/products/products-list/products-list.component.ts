@@ -11,8 +11,11 @@ import { PlushesService } from '../../../services/plush.service';
 export class ProductsListComponent implements OnInit {
   products!: Plush[];
   search: string = "";
-  sortTitle: string = "asc";
-  sortDate: string = "asc";
+  sortTitle: string | undefined = "asc";
+  sortDate: string | undefined = "asc";
+  sortPrice: string | undefined = "asc";
+  sortType: string = "name";
+  sortOrder: string = "asc";
   constructor(private plushesService: PlushesService) {}
 
   ngOnInit() {
@@ -26,31 +29,18 @@ export class ProductsListComponent implements OnInit {
   }
 
   handleSortTypeEvent(sortType: string): void {
-    if (sortType === "Name") {
-      this.sortTitle = "asc";
-    }
-    if (sortType === "Date") {
-      this.sortDate = "asc";
-    }
+    this.sortType = sortType;
+    this.applySorting();
   }
 
   handleSortOrderEvent(sortOrder: string): void {
-    this.sortTitle = sortOrder;
+    this.sortOrder = sortOrder;
+    this.applySorting();
   }
 
-  toggleSortOrder(sortType: string) {
-    if (sortType === "title") {
-      if (this.sortTitle === "desc") {
-        this.sortTitle = "asc";
-      } else {
-        this.sortTitle = "desc";
-      }
-    } else {
-      if (this.sortDate === "desc") {
-        this.sortDate = "asc";
-      } else {
-        this.sortDate = "desc";
-      }
-    }
+  applySorting(): void {
+    this.sortTitle = this.sortType === "name" ? this.sortOrder : undefined;
+    this.sortDate = this.sortType === "date" ? this.sortOrder : undefined;
+    this.sortPrice = this.sortType === "price" ? this.sortOrder : undefined;
   }
 }

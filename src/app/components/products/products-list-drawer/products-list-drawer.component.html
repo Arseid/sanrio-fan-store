@@ -1,25 +1,49 @@
-  <div class="container">
-    <div class="sub-container">
-      <h1 class="title">Search</h1>
-      <div class="search-container">
-        <input
-          type="text"
-          placeholder="Search a product ..."
-          class="search-input input"
-          (input)="emitSearchEvent($event)"
-        />
-      </div>
+<div class="container">
+  <div class="sub-container">
+    <h1 class="title">Search</h1>
+    <div class="search-container">
+      <input
+              type="text"
+              placeholder="Search a product ..."
+              class="search-input input"
+              (input)="emitSearchEvent($event)"
+      />
+    </div>
 
-      <h1 class="title">Sort by</h1>
-      <div class="select-container">
-        <select class="select input" (change)="emitSortTypeEvent($event)">
-          <option selected>Name</option>
-          <option>Date</option>
-        </select>
-        <div class="direction">
-          <button class="toggle-button left active" (click)="emitSortOrderEvent('asc')">Ascendant</button>
-          <button class="toggle-button right" (click)="emitSortOrderEvent('desc')">Descendant</button>
-        </div>
+    <h1 class="title">Sort by</h1>
+    <div class="select-container">
+      <select class="select input" (change)="emitSortTypeEvent($event)">
+        <option value="name" selected>Name</option>
+        <option value="price">Price</option>
+        <option value="date">Date</option>
+      </select>
+      <div class="direction">
+        <button class="toggle-button left active" (click)="emitSortOrderEvent('asc')">Ascendant</button>
+        <button class="toggle-button right" (click)="emitSortOrderEvent('desc')">Descendant</button>
       </div>
     </div>
+
+    <h1 class="title">Filter by</h1>
+    <div class="checkbox-container">
+      <label class="checkbox-label">
+        <input type="checkbox" class="checkbox-input" />
+        Type
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" class="checkbox-input" />
+        Favorite
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" class="checkbox-input" />
+        Size
+      </label>
+    </div>
+
+    <h1 class="title">Price</h1>
+    <div class="price-container">
+      <input type="text" placeholder="Min" class="price-input input" />
+      <span class="dash">&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+      <input type="text" placeholder="Max" class="price-input input" />
+    </div>
   </div>
+</div>
