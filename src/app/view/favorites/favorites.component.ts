@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {FavoriteProductsService} from "../services/favorite-products.service";
-import {Plush} from "../models/plush.model";
+import {FavoriteProductsService} from "../../services/favorite-products.service";
+import {Plush} from "../../models/plush.model";
 
 @Component({
   selector: 'app-favorites',

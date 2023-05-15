@@ -1,4 +1,4 @@
-@import "../app.palette.scss";
+@import "../../../app.palette.scss";
 
 .container {
   height: 100%;
@@ -134,7 +134,7 @@
     width: 100%;
     height: 2.5rem;
     padding-left: 2.5rem;
-    background-image: url("../../assets/svg/search.svg");
+    background-image: url("../../../../assets/svg/search.svg");
     background-position: 1rem center;
     background-repeat: no-repeat;
     background-size: 1rem;

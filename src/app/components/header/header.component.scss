@@ -1,4 +1,4 @@
-@import "../app.palette.scss";
+@import "../../app.palette.scss";
 
 .header {
   box-shadow: 0px 4px 9px $shadow;
@@ -8,7 +8,7 @@
   height: 54px;
   padding: 0.75rem 2rem;
   margin: 0 auto;
-  background-image: url("../../assets/svg/header-clouds.svg"),
+  background-image: url("../../../assets/svg/header-clouds.svg"),
     linear-gradient(to right, $grapefruit, $salmon);
   background-repeat: no-repeat;
   background-position: right bottom;
