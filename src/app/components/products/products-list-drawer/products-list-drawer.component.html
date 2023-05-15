@@ -17,8 +17,8 @@
           <option>Date</option>
         </select>
         <div class="direction">
-          <button class="toggle-button left active" (click)="emitSortOrderEvent('asc')">Ascendant</button>
-          <button class="toggle-button right" (click)="emitSortOrderEvent('desc')">Descendant</button>
+          <button class="toggle-button left" [ngClass]="{'active': isAscActive}" (click)="emitSortOrderEvent('asc'); toggleAscActive()">Ascendant</button>
+          <button class="toggle-button right" [ngClass]="{'active': isDescActive}" (click)="emitSortOrderEvent('desc'); toggleDescActive()">Descendant</button>
         </div>
       </div>
     </div>

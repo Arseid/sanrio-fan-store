@@ -9,6 +9,8 @@ export class ProductsListDrawerComponent {
   @Output() searchEvent = new EventEmitter<string>();
   @Output() sortTypeEvent = new EventEmitter<string>();
   @Output() sortOrderEvent = new EventEmitter<string>();
+  isAscActive = true;
+  isDescActive = false;
 
   emitSearchEvent(event: any): void {
     this.searchEvent.emit(event.target.value);
@@ -20,5 +22,15 @@ export class ProductsListDrawerComponent {
 
   emitSortOrderEvent(order: string): void {
     this.sortOrderEvent.emit(order);
+  }
+
+  toggleAscActive() {
+    this.isAscActive = true;
+    this.isDescActive = false;
+  }
+
+  toggleDescActive() {
+    this.isDescActive = true;
+    this.isAscActive = false;
   }
 }
