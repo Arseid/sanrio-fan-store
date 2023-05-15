@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Plush} from '../models/plush.model';
-import {PlushesService} from "../services/plush.service";
-import {FavoriteProductsService} from "../services/favorite-products.service";
-import { CartService } from '../services/cart.service';
+import {Plush} from '../../../models/plush.model';
+import {PlushesService} from "../../../services/plush.service";
+import {FavoriteProductsService} from "../../../services/favorite-products.service";
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-product-card',

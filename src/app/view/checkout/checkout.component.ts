@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { CartService } from '../services/cart.service';
-import { Order } from '../models/order.model';
-import {OrderService} from "../services/order.service"; // Import the Order model
+import { CartService } from '../../services/cart.service';
+import { Order } from '../../models/order.model';
+import {OrderService} from "../../services/order.service"; // Import the Order model
 
 @Component({
     selector: 'app-checkout',

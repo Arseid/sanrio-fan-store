@@ -1,0 +1,25 @@
+  <div class="container">
+    <div class="sub-container">
+      <h1 class="title">Search</h1>
+      <div class="search-container">
+        <input
+          type="text"
+          placeholder="Search a product ..."
+          class="search-input input"
+          (input)="emitSearchEvent($event)"
+        />
+      </div>
+
+      <h1 class="title">Sort by</h1>
+      <div class="select-container">
+        <select class="select input" (change)="emitSortTypeEvent($event)">
+          <option selected>Name</option>
+          <option>Date</option>
+        </select>
+        <div class="direction">
+          <button class="toggle-button left active" (click)="emitSortOrderEvent('asc')">Ascendant</button>
+          <button class="toggle-button right" (click)="emitSortOrderEvent('desc')">Descendant</button>
+        </div>
+      </div>
+    </div>
+  </div>

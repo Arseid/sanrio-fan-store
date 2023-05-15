@@ -1,0 +1,18 @@
+<div class="product-card-box">
+  <div class="product-card">
+    <a class="link-box" [routerLink]="['/product', product.id]">
+      <div class="product-image">
+        <img [src]="product.imageUrl" alt="{{ product.title }}" />
+      </div>
+    </a>
+    <div class="product-info-box">
+      <div class="product-name two-lines-ellipsis">{{ product.title | uppercase }}</div>
+      <div class="flex-row">
+        <div class="product-price">
+          {{ selectedPrice | currency : "EUR" }}
+        </div>
+        <button class="add-to-cart" (click)="onAddToCart()"><img src="../../assets/svg/shopping-cart-plus.svg" alt="add to cart"/></button>
+      </div>
+    </div>
+  </div>
+</div>

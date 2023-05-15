@@ -1,33 +1,35 @@
-import {LOCALE_ID, NgModule} from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import {registerLocaleData} from "@angular/common";
+import { registerLocaleData } from '@angular/common';
 import localeEn from '@angular/common/locales/en';
-registerLocaleData(localeEn, 'en');
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSliderModule } from '@angular/material/slider';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductCardComponent } from './product-card/product-card.component';
-import {ReactiveFormsModule} from "@angular/forms";
-
-import { MatSliderModule } from '@angular/material/slider';
-import { MatButtonModule } from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from "@angular/material/input";
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SortByDatePipe } from './pipes/sort-by-date.pipe';
-import {FormsModule} from '@angular/forms';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ProductCardComponent } from './components/products/product-card/product-card.component';
+import {
+    ProductDetailComponent
+} from './components/products/product-detail/product-detail.component';
+import {
+    ProductsListDrawerComponent
+} from './components/products/products-list-drawer/products-list-drawer.component';
+import { ProductsListComponent } from './components/products/products-list/products-list.component';
 import { SearchPipePipe } from './pipes/search-pipe.pipe';
-import { ProductsListComponent } from './products-list/products-list.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { AboutComponent } from './about/about.component';
+import { SortByDatePipe } from './pipes/sort-by-date.pipe';
 import { SortByTitlePipe } from './pipes/sort-by-title.pipe';
-import { FavoritesComponent } from './favorites/favorites.component';
-import { CartComponent } from './cart/cart.component';
-import { CheckoutComponent } from './checkout/checkout.component';
+import { AboutComponent } from './view/about/about.component';
+import { CartComponent } from './view/cart/cart.component';
+import { CheckoutComponent } from './view/checkout/checkout.component';
+import { FavoritesComponent } from './view/favorites/favorites.component';
+
+registerLocaleData(localeEn, "en");
 
 @NgModule({
   declarations: [
@@ -43,20 +45,21 @@ import { CheckoutComponent } from './checkout/checkout.component';
     SortByTitlePipe,
     FavoritesComponent,
     CartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ProductsListDrawerComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        MatSliderModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule
-    ],
-  providers: [ { provide: LOCALE_ID, useValue: 'en' } ],
-  bootstrap: [AppComponent]
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatSliderModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+  ],
+  providers: [{ provide: LOCALE_ID, useValue: "en" }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

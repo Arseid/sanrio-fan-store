@@ -1,0 +1,27 @@
+<div class="container">
+  <app-products-list-drawer
+          (searchEvent)="handleSearchEvent($event)"
+          (sortTypeEvent)="handleSortTypeEvent($event)"
+          (sortOrderEvent)="handleSortOrderEvent($event)"
+  ></app-products-list-drawer>
+  <div class="content-container">
+    <div class="title-div">
+      <img src="../../assets/svg/cloud-title.svg">
+      <div class="title">Products list</div>
+    </div>
+    <div class="products-list">
+      <ng-container *ngIf="products">
+        <app-product-card
+          *ngFor="
+            let product of products
+              | sortByDate : sortDate
+              | sortByTitle : sortTitle
+              | filterBySearch : search
+          "
+          [product]="product"
+        >
+        </app-product-card>
+      </ng-container>
+    </div>
+  </div>
+</div>
