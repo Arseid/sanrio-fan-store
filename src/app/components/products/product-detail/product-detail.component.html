@@ -23,13 +23,26 @@
       </div>
 
       <div class="foot">
-        <div class="product-price">{{ selectedPrice | currency : "EUR" }}</div>
-        <button class="favorite" (click)="onAddToFavorites()">
-          Add to favorites
-        </button>
-        <button class="cart">
-          Add to cart<img src="../../assets/svg/shopping-cart-plus.svg" />
-        </button>
+        <div class="size-box">
+          <div>Size</div>
+          <select class="select input">
+            <option selected>size 1</option>
+            <option>size 2</option>
+          </select>
+        </div>
+        <div class="end-box">
+          <div class="product-price">
+            {{ selectedPrice | currency : "EUR" }}
+          </div>
+          <div class="buttons">
+            <button class="favorite" (click)="onAddToFavorites()">
+              Add to favorites
+            </button>
+            <button class="cart">
+              Add to cart<img src="../../assets/svg/shopping-cart-plus.svg" />
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
