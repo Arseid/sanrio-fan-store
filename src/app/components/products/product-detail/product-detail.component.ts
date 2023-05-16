@@ -4,6 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Plush } from "../../../models/plush.model";
 import { FavoriteProductsService } from "../../../services/favorite-products.service";
 import { PlushesService } from "../../../services/plush.service";
+import {CartService} from "../../../services/cart.service";
 
 @Component({
   selector: "app-product-detail",
@@ -15,12 +16,14 @@ export class ProductDetailComponent implements OnInit {
   id!: number;
   orientation!: string;
   selectedPrice = 0;
+  selectedQuantity = 1;
   validationState = false;
   imageUrl = "../../assets/svg/shopping-cart-plus.svg";
 
   constructor(
     private plushesService: PlushesService,
     private favoritesService: FavoriteProductsService,
+    private cartService: CartService,
     private route: ActivatedRoute
   ) {
     this.route.params.subscribe((params) => {
@@ -48,8 +51,12 @@ export class ProductDetailComponent implements OnInit {
   }
 
   async onAddToCart(): Promise<void> {
+    const selectedSize = this.product.size
+        ? this.product.size[this.product.price.indexOf(this.selectedPrice)]
+        : null;
     this.validationState = true;
     this.imageUrl = "../../assets/svg/plus.svg";
+    this.cartService.addToCart(this.product, selectedSize, this.selectedQuantity);
     setTimeout(() => {
       this.validationState = false;
       this.imageUrl = "../../assets/svg/shopping-cart-plus.svg";
