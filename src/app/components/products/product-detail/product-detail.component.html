@@ -9,27 +9,38 @@
         <div class="product-title">{{ product.title }}</div>
         <p>{{ product.description }}</p>
         <p>Publication Date: {{ product.publicationDate | date }}</p>
-        <div
-          class="product-size"
-          *ngIf="product.size && product.size.length > 1"
-        >
-          Multiple sizes available :
-          <select (change)="onSizeSelected($event)" *ngIf="product.size">
-            <option *ngFor="let size of product.size" value="{{ size }}">
-              {{ size }}
-            </option>
-          </select>
-        </div>
       </div>
 
       <div class="foot">
-        <div class="product-price">{{ selectedPrice | currency : "EUR" }}</div>
-        <button class="favorite" (click)="onAddToFavorites()">
-          Add to favorites
-        </button>
-        <button class="cart">
-          Add to cart<img src="../../assets/svg/shopping-cart-plus.svg" />
-        </button>
+        <div class="selectors">
+          <div class="size-box">
+            <div *ngIf="product.size && product.size.length > 1">Size</div>
+            <select class="select input" (change)="onSizeSelected($event)" *ngIf="product.size && product.size.length > 1">
+              <option *ngFor="let size of product.size" value="{{ size }}">{{ size }}</option>
+            </select>
+          </div>
+          <div class="quantity-box">
+            <div>Quantity</div>
+            <input type="number" value="1"/>
+          </div>
+        </div>
+        <div class="end-box">
+          <div class="product-price">
+            {{ selectedPrice | currency : "EUR" }}
+          </div>
+          <div class="buttons">
+            <button class="favorite" (click)="onAddToFavorites()">
+              Add to favorites
+            </button>
+            <button
+              class="cart"
+              [ngClass]="{ 'cart-validation': validationState }"
+              (click)="onAddToCart()"
+            >
+              Add to cart<img [src]="imageUrl" />
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

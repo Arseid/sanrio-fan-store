@@ -10,6 +10,8 @@ export class ProductsListDrawerComponent {
   @Output() sortTypeEvent = new EventEmitter<string>();
   @Output() sortOrderEvent = new EventEmitter<string>();
   @Output() priceRangeEvent = new EventEmitter<{min: number, max: number}>();
+  isAscActive = true;
+  isDescActive = false;
 
   emitSearchEvent(event: any): void {
     this.searchEvent.emit(event.target.value);
@@ -29,4 +31,14 @@ export class ProductsListDrawerComponent {
     this.priceRangeEvent.emit({min, max});
   }
 
+
+  toggleAscActive() {
+    this.isAscActive = true;
+    this.isDescActive = false;
+  }
+
+  toggleDescActive() {
+    this.isDescActive = true;
+    this.isAscActive = false;
+  }
 }

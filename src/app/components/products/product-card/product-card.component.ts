@@ -12,7 +12,9 @@ import { CartService } from '../../../services/cart.service';
 export class ProductCardComponent implements OnInit {
   @Input() product!: Plush;
 
+  validationState = false;
   selectedPrice = 0;
+  imageUrl = "../../assets/svg/shopping-cart-plus.svg";
 
   constructor(private plushesService: PlushesService,
               private favoritesService: FavoriteProductsService,
@@ -41,6 +43,12 @@ export class ProductCardComponent implements OnInit {
         ? this.product.size[this.product.price.indexOf(this.selectedPrice)]
         : null;
     this.cartService.addToCart(this.product, selectedSize, 1);
+    this.validationState = true;
+    this.imageUrl = "../../assets/svg/plus.svg";
+    setTimeout(() => {
+      this.validationState = false;
+      this.imageUrl = "../../assets/svg/shopping-cart-plus.svg";
+    }, 1000);
   }
 
   ngOnInit(): void {

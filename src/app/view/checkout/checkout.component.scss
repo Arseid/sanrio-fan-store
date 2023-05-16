@@ -1,0 +1,139 @@
+@import "../../../styles/palette.scss";
+
+input {
+  border: none;
+  background-color: $secondary-pink;
+  box-shadow: 0 1px 0 0px $primary-text;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+
+  &::placeholder {
+    color: $primary-text-light;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px $primary-text;
+  }
+}
+
+button {
+  border: none;
+  background-color: $primary-pink;
+  color: white;
+  border-radius: 0.75rem;
+  padding: 1rem 8rem;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    background-color: white;
+    color: $primary-pink;
+    box-shadow: 0 0 0 2px $primary-pink;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  height: 100%;
+  box-sizing: border-box;
+  width: 100%;
+
+  & > * {
+    margin-bottom: 3rem;
+  }
+
+  .title {
+    font-size: 4rem;
+    line-height: 4rem;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 1rem;
+
+    & * {
+      font-size: 2rem;
+    }
+
+    tr {
+      padding-bottom: 1rem;
+    }
+  }
+
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+
+    .total {
+      display: flex;
+      flex-direction: row;
+      padding-bottom: 1.5rem;
+
+      * {
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+      }
+
+      .bold {
+        font-weight: bold;
+        padding-right: 1rem;
+      }
+    }
+  }
+
+  .order-id-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 0;
+
+    & > * {
+      font-size: 2.5rem;
+      line-height: 2.5rem;
+    }
+
+    .order-id {
+      font-weight: bold;
+      color: $primary-pink;
+      padding-top: 1rem;
+    }
+  }
+
+  // Styles responsifs
+  @media (max-width: 800px) {
+    padding: 1rem;
+    width: auto;
+
+    .title {
+      font-size: 3rem;
+      line-height: 3rem;
+    }
+
+    table {
+      font-size: 1.5rem;
+      border-spacing: 0.5rem;
+
+      * {
+        font-size: 1.5rem;
+      }
+    }
+
+    .bottom {
+      .total {
+        font-size: 2rem;
+        line-height: 2rem;
+      }
+    }
+  }
+}

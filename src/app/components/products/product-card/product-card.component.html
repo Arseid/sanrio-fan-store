@@ -5,13 +5,25 @@
         <img [src]="product.imageUrl" alt="{{ product.title }}" />
       </div>
     </a>
+      
     <div class="product-info-box">
-      <div class="product-name two-lines-ellipsis">{{ product.title | uppercase }}</div>
+      <div class="product-name two-lines-ellipsis">
+        {{ product.title | uppercase }}
+      </div>
       <div class="flex-row">
         <div class="product-price">
-          {{ selectedPrice | currency : "EUR" }}
+          <div>{{ selectedPrice | currency : "EUR" }}</div>
+          <select class="product-size" (change)="onSizeSelected($event)" *ngIf="product.size && product.size.length > 1">
+            <option *ngFor="let size of product.size" value="{{ size }}">{{ size }}</option>
+          </select>
         </div>
-        <button class="add-to-cart" (click)="onAddToCart()"><img src="../../assets/svg/shopping-cart-plus.svg" alt="add to cart"/></button>
+        <button
+          class="add-to-cart"
+          [ngClass]="{ 'cart-validation': validationState }"
+          (click)="onAddToCart()"
+        >
+          <img [src]="imageUrl" alt="add to cart" />
+        </button>
       </div>
     </div>
   </div>
