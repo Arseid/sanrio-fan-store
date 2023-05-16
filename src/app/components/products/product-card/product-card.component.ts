@@ -33,11 +33,6 @@ export class ProductCardComponent implements OnInit {
     })
   }
 
-  async onAddToFavorites(): Promise<void> {
-    const selectedSize = this.product.size ? this.product.size[this.product.price.indexOf(this.selectedPrice)] : null;
-    await this.favoritesService.addToFavorites(this.product, selectedSize);
-  }
-
   async onAddToCart(): Promise<void> {
     const selectedSize = this.product.size
         ? this.product.size[this.product.price.indexOf(this.selectedPrice)]
