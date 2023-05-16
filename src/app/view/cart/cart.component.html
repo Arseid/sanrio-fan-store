@@ -44,9 +44,6 @@
   </div>
   <div class="cart-summary">
     <h3>Cart Summary</h3>
-    <p>Total: {{ cartService.getTotalPrice() | currency : "EUR" }}</p>
-    <button class="checkout-button" [routerLink]="['/checkout']">
-      Checkout
-    </button>
-  </div>
+    <p>Total: {{ cartService.getTotalPrice() | currency: 'EUR' }}</p>
+    <button class="checkout-button" [routerLink]="['/checkout']" [disabled]="cartService.getCart().length==0">Checkout</button>
 </div>
