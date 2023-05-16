@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Plush } from "../models/plush.model";
-import {PlushesService} from "./plush.service";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +7,7 @@ import {PlushesService} from "./plush.service";
 export class FavoriteProductsService {
   private favorites: Plush[] = [];
 
-  constructor(private plushesService: PlushesService) {
+  constructor() {
     this.getFavoritesFromLocalStorage();
   }
 
@@ -23,25 +22,9 @@ export class FavoriteProductsService {
     localStorage.setItem('favorites', JSON.stringify(this.favorites));
   }
 
-  async addToFavorites(productToAdd: Plush, selectedSize: string | null): Promise<void> {
-    const productWithSelectedSizeAndPrice: Plush = {
-      ...productToAdd,
-      selectedSize: selectedSize,
-      selectedPrice: selectedSize ? await this.plushesService.getProductPrice(productToAdd.id, selectedSize) : null,
-    };
-
-    if (
-        !(
-            this.favorites.some(
-                (product) =>
-                    product.id === productToAdd.id &&
-                    product.selectedSize === productWithSelectedSizeAndPrice.selectedSize
-            )
-        )
-    ) {
-      this.favorites.push(productWithSelectedSizeAndPrice);
+  addToFavorites(productToAdd: Plush): void {
+      this.favorites.push(productToAdd);
       this.saveFavoritesToLocalStorage();
-    }
   }
 
   removeFromFavorites(id: number): void {

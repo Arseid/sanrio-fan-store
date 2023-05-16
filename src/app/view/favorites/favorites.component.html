@@ -3,9 +3,9 @@
 </div>
 
 <div *ngIf="favorites.length > 0">
-    <h1>Favorite Products</h1>
+    <h1 style="margin-top: 30px">Favorite Products</h1>
     <div class="favorite-products-search-container">
-        <mat-form-field appearance="outline" color="warn" class="favorite-products-search-field">
+        <mat-form-field appearance="outline" class="favorite-products-search-field">
             <mat-label>Search</mat-label>
             <input matInput type="text" id="search" name="search" [(ngModel)]="search" />
         </mat-form-field>
@@ -20,11 +20,9 @@
     </div>
     <ul *ngFor="let product of (favorites | sortByDate:sortDate | sortByTitle:sortTitle | filterBySearch:search)">
         <li>
-            <img [src]="product.imageUrl" alt="{{ product.title }}"/>
+            <a [routerLink]="['/product', product.id]"><img [src]="product.imageUrl" alt="{{ product.title }}"/></a>
             <h2>{{product.title}}</h2>
-            <p *ngIf="product.selectedSize">Size: {{ product.selectedSize }}</p>
-            <p>Price: {{ product.selectedPrice | currency: 'EUR' }}</p>
-            <button mat-raised-button color="warn" (click)="onRemoveFromFavorites(product)">Remove from favorites</button>
+                <button mat-stroked-button (click)="onRemoveFromFavorites(product)">Remove from favorites</button>
         </li>
     </ul>
 </div>

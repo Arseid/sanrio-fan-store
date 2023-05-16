@@ -43,11 +43,8 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
-  async onAddToFavorites(): Promise<void> {
-    const selectedSize = this.product.size
-      ? this.product.size[this.product.price.indexOf(this.selectedPrice)]
-      : null;
-    await this.favoritesService.addToFavorites(this.product, selectedSize);
+  onAddToFavorites(): void {
+    this.favoritesService.addToFavorites(this.product);
   }
 
   async onAddToCart(): Promise<void> {
