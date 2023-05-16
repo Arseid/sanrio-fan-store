@@ -54,6 +54,7 @@ export class PlushesService {
         return product.price[sizeIndex];
     }
 
+    /* Deprecated
     async onLikeProduct(id: number): Promise<Plush> {
         const response = await fetch(`${this.serverUrl}/plushes/${id}/likes`, {
             method: 'PUT',
@@ -74,4 +75,5 @@ export class PlushesService {
             data['size']
         );
     }
+     */
 }

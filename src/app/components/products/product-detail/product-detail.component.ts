@@ -36,12 +36,14 @@ export class ProductDetailComponent implements OnInit {
     this.selectedPrice = this.product.price[priceIndex];
   }
 
+  /* Deprecated
   onAddLike() {
     this.plushesService.onLikeProduct(this.product.id).then((product) => {
       this.product["isLiked"] = product["isLiked"];
       this.product["likes"] = product["likes"];
     });
   }
+ */
 
   onAddToFavorites(): void {
     this.favoritesService.addToFavorites(this.product);

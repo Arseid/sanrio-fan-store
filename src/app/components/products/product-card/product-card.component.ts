@@ -26,12 +26,14 @@ export class ProductCardComponent implements OnInit {
     this.selectedPrice = this.product.price[priceIndex];
   }
 
+  /* Deprecated
   onAddLike() {
     this.plushesService.onLikeProduct(this.product.id).then((product) => {
       this.product['isLiked'] = product['isLiked'];
       this.product['likes'] = product['likes'];
     })
   }
+   */
 
   async onAddToCart(): Promise<void> {
     const selectedSize = this.product.size
